@@ -7,13 +7,9 @@ chmod 600 /home/vagrant/.ssh/authorized_keys
 
 grep 'vagrant ALL=(ALL) NOPASSWD: ALL' /etc/sudoers >/dev/null || echo 'vagrant ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers
 
-cp /etc/ssh/sshd_config{,.bak}
-sed 's/#UseDNS yes/UseDNS no/' /etc/ssh/sshd_config > /etc/ssh/sshd_config.new
-mv -f /etc/ssh/sshd_config.new /etc/ssh/sshd_config
+sed -i -e 's/#UseDNS yes/UseDNS no/' /etc/ssh/sshd_config
 
-cp /etc/sudoers{,.bak}
-sed -e 's/^Defaults    requiretty/#Defaults    requiretty/' -e 's/^Defaults   !visiblepw/#Defaults   !visiblepw/' /etc/sudoers > /etc/sudoers.new
-mv -f /etc/sudoers.new /etc/sudoers
+sed -i -e 's/^Defaults    requiretty/#Defaults    requiretty/' -e 's/^Defaults   !visiblepw/#Defaults   !visiblepw/' /etc/sudoers
 
 yum update -y
 
